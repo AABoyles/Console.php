@@ -4,7 +4,7 @@
 //  Copyright 2014 By [Tony Boyles]<AABoyles@gmail.com> (http://aaboyles.com)
 //  Licensed under the GPL v3 or later.
  
-//Edit these Credentials to match your Oracle Database's
+//Edit these Credentials to match your Database's
 $dbuser = '';
 $dbpass = '';
 $dbhost = '127.0.0.1';

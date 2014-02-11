@@ -8,13 +8,16 @@
 $dbfile = '';
  
 $print = FALSE;
-if(isset($_REQUEST['query'])){
-	$db = sqlite_open($dbfile);
-	$result = sqlite_query($db, $_REQUEST['query']);
-	$res = sqlite_fetch_all($result, SQLITE_ASSOC);
+if(file_exists($dbfile) && isset($_REQUEST['query'])){
+	$db = new SQLite3($dbfile);
+	$result = $db->query($_REQUEST['query']);
 	if (isset($_REQUEST['data'])) {
 		header('Content-type: application/json');
-		exit(json_encode($res));
+		$return = Array();
+		while($row = $result->fetchArray(SQLITE3_ASSOC)){
+			$return[] = $row;
+		}
+		exit(json_encode($return));
 	}
 	$print = TRUE;
 }
